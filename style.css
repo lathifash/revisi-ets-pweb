@@ -1,0 +1,30 @@
+/* CSS untuk layar dengan lebar > 768px */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    flex-basis: calc(25% - 20px); /* 4 cards in one row with some margin */
+    margin: 10px; /* Add some margin for spacing */
+    text-align: center;
+}
+
+/* CSS untuk layar dengan lebar <= 768px */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column; /* Mengubah tata letak menjadi satu kolom */
+    }
+
+    .card {
+        flex-basis: calc(50% - 20px); /* 2 cards in one row with some margin */
+    }
+}
+
+/* CSS untuk layar dengan lebar <= 480px */
+@media (max-width: 480px) {
+    .card {
+        flex-basis: calc(100% - 20px); /* 1 card in one row with some margin */
+    }
+}
