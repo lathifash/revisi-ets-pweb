@@ -9,18 +9,25 @@ async function fetchPokemonData() {
 
         const pokemonList = data.results;
 
-        // Display Pokemon names on the respective cards
         const cards = document.querySelectorAll('.card');
         for (let i = 0; i < pokemonList.length; i++) {
-            const name = pokemonList[i].name.charAt(0).toUpperCase() + pokemonList[i].name.slice(1);
+            const name = pokemonList[i].name;
             const card = cards[i];
             const paragraph = card.querySelector('p');
-            paragraph.textContent = name;
+            paragraph.textContent = name.charAt(0).toUpperCase() + name.slice(1);
+
+            // Add an event listener to the "Detail" button
+            const detailButton = card.querySelector('.button');
+            detailButton.addEventListener('click', () => {
+                // Construct the URL for the Pokemon detail page
+                const detailUrl = `https://pokeapi.co/api/v2/pokemon/${name}`;
+                // Open the URL in a new tab
+                window.open(detailUrl, '_blank');
+            });
         }
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
-// Call the function to fetch and display Pokemon data
 fetchPokemonData();
